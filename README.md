@@ -33,9 +33,7 @@ The theme button displays:
 
 ### 1. Install a userscript manager
 
-Install **Tampermonkey**:
-
-https://www.tampermonkey.net/
+Install **Tampermonkey**: https://www.tampermonkey.net/
 
 ### 2. Install the script
 
