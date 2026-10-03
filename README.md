@@ -1,59 +1,114 @@
-# GateOverflow Book — Clean Reader
+# GATEOverflow Clean Book Viewer
 
-A small userscript that turns the GateOverflow Book viewer into a focused reading surface: less chrome, contained scrolling, centered content, and a compact Light/Dark toggle.
+A lightweight userscript that customizes the **GATEOverflow Book Viewer** for a cleaner, more focused reading experience.
 
-## What it does
+The script is intended for use with a userscript manager such as **Tampermonkey**. It modifies the Book Viewer interface in the browser without changing the underlying book content.
 
-- Hides surrounding GateOverflow page chrome so the book viewer gets the space.
-- Keeps scrolling inside the sidebar and reading area instead of the whole page.
-- Centers the book content with a small desktop offset that is removed in fullscreen.
-- Hides selected viewer controls that are not useful for a clean reading workflow.
-- Adds a compact Light/Dark toggle and persists the selected theme.
-- Re-applies the layout when the Book Viewer is inserted or updated dynamically.
+## Features
 
-## Install
+- Hides selected Book Viewer controls that are not needed for reading.
+- Removes selected page/site chrome for a cleaner interface.
+- Keeps the main Book Viewer layout focused on the book content.
+- Prevents unwanted outer-page scrolling while preserving scrolling inside the sidebar and book content areas.
+- Centers the book content area for a more comfortable reading layout.
+- Restores the appropriate content positioning when entering fullscreen.
+- Adds a light/dark theme toggle with the selected theme saved in browser storage.
+- Uses CSS overrides with `!important` where necessary so the customization remains effective against existing site styles.
+- Can be customized by editing the CSS selectors in the script.
 
-Use a userscript manager such as Tampermonkey or Violentmonkey.
+## Theme Toggle
 
-1. Open `script.user.js`.
-2. Install the script in your userscript manager.
-3. Open a GateOverflow Book page.
-4. The clean reader layout is applied automatically.
+The script stores the selected theme in `localStorage` and applies it through the document's `data-theme` attribute.
 
-## Scope
+The theme button displays:
 
-The script only targets:
+- `☾ Dark` when light mode is active
+- `☀ Light` when dark mode is active
 
-```text
-https://gateoverflow.in/book*
-```
+## Live Preview 
+![GATEOverflow Clean Book Viewer Lightmode Demo](https://www.image2url.com/r2/default/gifs/1791036994403-828f9671-372a-4460-b180-b43c8cebf38d.gif)
+![GATEOverflow Clean Book Viewer Darkmode Demo](https://www.image2url.com/r2/default/gifs/1791037182361-9f092008-0df4-443c-802b-0e76d9989422.gif)
 
-It uses `@grant none` and does not require a build step.
+## Installation
 
-## Notes
+### 1. Install a userscript manager
 
-The script intentionally relies on GateOverflow's current Book Viewer DOM structure and theme attributes. Changes to the site's markup or class names may require updates to the selectors in the script.
+Install **Tampermonkey**:
 
-The Light/Dark toggle persists the theme through the site's `theme` localStorage key and updates the document `data-theme` attribute.
+https://www.tampermonkey.net/
 
-## Development
+### 2. Install the script
 
-There is no build system. Edit the `.user.js` file directly, reload the userscript, and refresh the target page.
+You can install the userscript by:
 
-A practical local check before committing is:
+1. Opening the `.user.js` file and allowing Tampermonkey to install it.  OR,
+2. Opening Tampermonkey, creating a new script, and pasting the script contents. OR,
+3. Opening the raw `.user.js` file from GitHub and installing it through Tampermonkey.
 
-```bash
-node --check gateoverflow-clean-reader.user.js
-```
+Tampermonkey uses userscript metadata such as `@name`, `@match`, and `@description` to identify the script.
 
-## Project structure
+**Documentation**: https://www.tampermonkey.net/documentation.php
 
-```text
-.
-├── script.user.js
-└── README.md
-```
+### 3. Enable userscript execution when required
 
-## Version
+On recent Chrome/Chromium-based browsers, Tampermonkey may require **Allow User Scripts** to be enabled, or Developer Mode may need to be enabled depending on the browser and Tampermonkey configuration.
 
-Current userscript version: `1.4`
+See FAQs: https://www.tampermonkey.net/faq.php
+
+## Usage
+
+After installation:
+
+1. Open a GATEOverflow Book Viewer page covered by the script's `@match` rule.
+2. Make sure the userscript is enabled in Tampermonkey.
+3. Reload the page.
+4. The Book Viewer interface will be adjusted automatically.
+
+No separate application or server is required.
+
+
+## Troubleshooting
+
+### The script does not run
+
+Check that:
+
+- Tampermonkey is installed and enabled.
+- The script itself is enabled.
+- The current page matches the script's `@match` rule.
+- The browser allows userscripts to execute.
+- The page has been reloaded after changing the script.
+
+## Compatibility
+
+The script is designed for the GATEOverflow Book Viewer and a browser environment that supports modern userscripts, DOM APIs, CSS, and `localStorage`.
+
+Compatibility depends on the current structure of the target page.
+
+## Important Notes
+
+- This is a client-side customization.
+- It does not modify GATEOverflow's server-side data.
+- It is not intended to bypass authentication, access controls, or security protections.
+- The script may require maintenance if the Book Viewer interface changes.
+- Use the script in accordance with the target website's terms and applicable policies.
+
+## Demo
+
+▶ [Watch the GATEOverflow Book Viewer demonstration on YouTube.](https://www.youtube.com/watch?v=7pWf5UXEZFU)
+
+## Contributing
+
+Bug reports, selector updates, layout improvements, and compatibility fixes are welcome.
+
+When reporting an issue, include:
+
+- browser and userscript manager,
+- affected Book Viewer page,
+- what changed,
+- and the relevant selector or code section when possible.
+
+## License
+
+No license is currently specified.
+
